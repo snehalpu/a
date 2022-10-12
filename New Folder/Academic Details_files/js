@@ -1,0 +1,32 @@
+var MenuSession=function() {
+MenuSession.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+MenuSession.prototype={
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return MenuSession._staticInstance.get_path();},
+GetMenuSessionValue:function(value,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetMenuSessionValue',false,{value:value},succeededCallback,failedCallback,userContext); }}
+MenuSession.registerClass('MenuSession',Sys.Net.WebServiceProxy);
+MenuSession._staticInstance = new MenuSession();
+MenuSession.set_path = function(value) { MenuSession._staticInstance.set_path(value); }
+MenuSession.get_path = function() { return MenuSession._staticInstance.get_path(); }
+MenuSession.set_timeout = function(value) { MenuSession._staticInstance.set_timeout(value); }
+MenuSession.get_timeout = function() { return MenuSession._staticInstance.get_timeout(); }
+MenuSession.set_defaultUserContext = function(value) { MenuSession._staticInstance.set_defaultUserContext(value); }
+MenuSession.get_defaultUserContext = function() { return MenuSession._staticInstance.get_defaultUserContext(); }
+MenuSession.set_defaultSucceededCallback = function(value) { MenuSession._staticInstance.set_defaultSucceededCallback(value); }
+MenuSession.get_defaultSucceededCallback = function() { return MenuSession._staticInstance.get_defaultSucceededCallback(); }
+MenuSession.set_defaultFailedCallback = function(value) { MenuSession._staticInstance.set_defaultFailedCallback(value); }
+MenuSession.get_defaultFailedCallback = function() { return MenuSession._staticInstance.get_defaultFailedCallback(); }
+MenuSession.set_enableJsonp = function(value) { MenuSession._staticInstance.set_enableJsonp(value); }
+MenuSession.get_enableJsonp = function() { return MenuSession._staticInstance.get_enableJsonp(); }
+MenuSession.set_jsonpCallbackParameter = function(value) { MenuSession._staticInstance.set_jsonpCallbackParameter(value); }
+MenuSession.get_jsonpCallbackParameter = function() { return MenuSession._staticInstance.get_jsonpCallbackParameter(); }
+MenuSession.set_path("/lpuums/MenuSession.asmx");
+MenuSession.GetMenuSessionValue= function(value,onSuccess,onFailed,userContext) {MenuSession._staticInstance.GetMenuSessionValue(value,onSuccess,onFailed,userContext); }
